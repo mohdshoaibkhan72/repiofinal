@@ -62,7 +62,11 @@ export const Header: React.FC = () => {
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2.5 z-50" onClick={() => window.scrollTo(0, 0)}>
-              <img src={logo} alt="RUPIVO" className="h-12 w-auto object-contain" />
+              <img
+                src={location.pathname === '/partner' ? "/RUPIVO_PARTNERS_transparent.png" : logo}
+                alt="RUPIVO"
+                className={location.pathname === '/partner' ? "h-16 w-auto object-contain" : "h-12 w-auto object-contain"}
+              />
             </Link>
 
             {/* Desktop Nav */}
