@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useModal } from '../contexts/ModalContext';
 import logo from '../logo.png';
 
 export const Header: React.FC = () => {
+  const { openModal } = useModal();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -52,8 +54,8 @@ export const Header: React.FC = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || mobileMenuOpen || !isHome
-            ? 'bg-white/80 backdrop-blur-lg border-b border-gray-100/50 shadow-sm'
-            : 'bg-transparent border-transparent'
+          ? 'bg-white/80 backdrop-blur-lg border-b border-gray-100/50 shadow-sm'
+          : 'bg-transparent border-transparent'
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,6 +79,12 @@ export const Header: React.FC = () => {
               <Link to="/signin" className="bg-rupivo-dark/5 text-rupivo-dark px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-rupivo-dark/10 transition-all">
                 Sign In
               </Link>
+              <button
+                onClick={openModal}
+                className="bg-rupivo-blue text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-opacity-90 transition-all shadow-lg shadow-rupivo-blue/30"
+              >
+                Apply Now
+              </button>
             </nav>
 
             {/* Mobile Toggle */}
@@ -100,8 +108,17 @@ export const Header: React.FC = () => {
           <button onClick={() => handleNavClick('eligibility')} className="text-left text-2xl font-bold text-rupivo-dark">Eligibility</button>
           <button onClick={() => handleNavClick('support')} className="text-left text-2xl font-bold text-rupivo-dark">Support</button>
           <Link to="/signin" onClick={() => setMobileMenuOpen(false)} className="text-left text-2xl font-bold text-rupivo-dark">Sign In</Link>
+          <button
+            onClick={() => { setMobileMenuOpen(false); openModal(); }}
+            className="text-left text-2xl font-bold text-rupivo-blue"
+          >
+            Apply Now
+          </button>
           <hr className="border-gray-100" />
-          <button className="w-full bg-rupivo-blue text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-rupivo-blue/30">
+          <button
+            onClick={() => { setMobileMenuOpen(false); openModal(); }}
+            className="w-full bg-rupivo-blue text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-rupivo-blue/30"
+          >
             Download App
           </button>
         </div>

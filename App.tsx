@@ -1,5 +1,7 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ModalProvider, useModal } from './contexts/ModalContext';
+import { RupivoPopup } from './components/form/RupivoPopup';
 import { Header } from './components/Header';
 import { Home } from './components/Home';
 import { StickyMobileCTA } from './components/StickyMobileCTA';
@@ -11,8 +13,13 @@ import { PrivacyPolicy, TermsAndConditions, GrievanceRedressal } from './compone
 import { ContactUs, FAQs } from './components/pages/Support';
 import { SignIn } from './components/pages/SignIn';
 import { ReferralPartner } from './components/pages/ReferralPartner';
+import { LoanApplication } from './components/pages/LoanApplication';
+import { AdminPanel } from './components/pages/AdminPanel';
+import { AdminLogin } from './components/pages/AdminLogin';
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
+  const { isModalOpen, closeModal } = useModal();
+
   return (
     <Router>
       <div className="min-h-screen flex flex-col font-sans">
@@ -20,7 +27,7 @@ const App: React.FC = () => {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            
+
             {/* Auth */}
             <Route path="/signin" element={<SignIn />} />
 
@@ -29,21 +36,35 @@ const App: React.FC = () => {
             <Route path="/careers" element={<Careers />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/partner" element={<ReferralPartner />} />
-            
+
             {/* Legal */}
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsAndConditions />} />
             <Route path="/grievance" element={<GrievanceRedressal />} />
-            
+
             {/* Support */}
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/faqs" element={<FAQs />} />
+
+            {/* New Features */}
+            <Route path="/apply" element={<LoanApplication />} />
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={<AdminPanel />} />
           </Routes>
         </main>
         <Footer />
         <StickyMobileCTA />
+        <RupivoPopup isOpen={isModalOpen} onClose={closeModal} />
       </div>
     </Router>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <ModalProvider>
+      <AppContent />
+    </ModalProvider>
   );
 };
 

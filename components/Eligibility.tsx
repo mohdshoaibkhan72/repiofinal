@@ -2,8 +2,10 @@ import React from 'react';
 import { UserCheck, Briefcase, MapPin, CreditCard } from 'lucide-react';
 import { Button } from './Button';
 import { ButtonVariant } from '../types';
+import { useModal } from '../contexts/ModalContext';
 
 export const Eligibility: React.FC = () => {
+  const { openModal } = useModal();
   const criteria = [
     { icon: <UserCheck className="w-6 h-6 text-rupivo-blue" />, label: "Age", value: "21 – 58 years" },
     { icon: <Briefcase className="w-6 h-6 text-rupivo-blue" />, label: "Monthly Income", value: "₹15,000+" },
@@ -29,7 +31,7 @@ export const Eligibility: React.FC = () => {
           ))}
         </div>
 
-        <Button variant={ButtonVariant.SECONDARY} className="px-12">
+        <Button variant={ButtonVariant.SECONDARY} className="px-12" onClick={openModal}>
           Check Your Eligibility Now
         </Button>
       </div>
