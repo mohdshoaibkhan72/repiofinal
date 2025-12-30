@@ -77,8 +77,8 @@ export const RupivoPopup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
   // --- Logic for Step 2: OTP ---
   const handleVerifyOtp = (e: React.FormEvent) => {
     e.preventDefault();
-    if (otp.length !== 4) { // Assuming 4 digit OTP for demo
-      setErrors({ otp: 'Please enter the 4-digit code' });
+    if (otp !== '1234') {
+      setErrors({ otp: 'Invalid OTP. Please use default OTP: 1234' });
       return;
     }
     // Simulate verification success
