@@ -5,7 +5,7 @@ import { useModal } from '../contexts/ModalContext';
 import logo from '../logo.png';
 
 export const Header: React.FC = () => {
-  const { openModal } = useModal();
+  const { openModal, openComingSoon } = useModal();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -76,9 +76,12 @@ export const Header: React.FC = () => {
               <button onClick={() => handleNavClick('support')} className="text-gray-600 hover:text-rupivo-blue font-semibold transition-colors text-sm tracking-wide">
                 Support
               </button>
-              <Link to="/signin" className="bg-rupivo-dark/5 text-rupivo-dark px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-rupivo-dark/10 transition-all">
+              <button
+                onClick={() => openComingSoon("Sign In is launching soon! stay tuned.")}
+                className="bg-rupivo-dark/5 text-rupivo-dark px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-rupivo-dark/10 transition-all"
+              >
                 Sign In
-              </Link>
+              </button>
               <button
                 onClick={openModal}
                 className="bg-rupivo-blue text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-opacity-90 transition-all shadow-lg shadow-rupivo-blue/30"
@@ -107,7 +110,7 @@ export const Header: React.FC = () => {
           <button onClick={() => handleNavClick('how-it-works')} className="text-left text-2xl font-bold text-rupivo-dark">How it Works</button>
           <button onClick={() => handleNavClick('eligibility')} className="text-left text-2xl font-bold text-rupivo-dark">Eligibility</button>
           <button onClick={() => handleNavClick('support')} className="text-left text-2xl font-bold text-rupivo-dark">Support</button>
-          <Link to="/signin" onClick={() => setMobileMenuOpen(false)} className="text-left text-2xl font-bold text-rupivo-dark">Sign In</Link>
+          <button onClick={() => { setMobileMenuOpen(false); openComingSoon("Sign In is launching soon! stay tuned."); }} className="text-left text-2xl font-bold text-rupivo-dark">Sign In</button>
           <button
             onClick={() => { setMobileMenuOpen(false); openModal(); }}
             className="text-left text-2xl font-bold text-rupivo-blue"
@@ -116,7 +119,7 @@ export const Header: React.FC = () => {
           </button>
           <hr className="border-gray-100" />
           <button
-            onClick={() => { setMobileMenuOpen(false); openModal(); }}
+            onClick={() => { setMobileMenuOpen(false); openComingSoon("Our mobile app is coming soon!"); }}
             className="w-full bg-rupivo-blue text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-rupivo-blue/30"
           >
             Download App

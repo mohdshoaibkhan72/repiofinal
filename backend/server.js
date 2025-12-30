@@ -17,7 +17,10 @@ mongoose.connect(process.env.MONGODB_URI)
 
 // Routes
 const applicationRoutes = require('./routes/applications');
+const partnerRoutes = require('./routes/partners');
+
 app.use('/api/applications', applicationRoutes);
+app.use('/api/partners', partnerRoutes);
 
 app.get('/', (req, res) => {
     res.send('Rupivo Backend is running properly');

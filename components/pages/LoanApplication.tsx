@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { api } from '../../services/api';
 
 export const LoanApplication: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -18,16 +19,7 @@ export const LoanApplication: React.FC = () => {
         e.preventDefault();
         setStatus('submitting');
         try {
-            const response = await fetch('http://localhost:5000/api/applications', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
-            if (!response.ok) throw new Error('Submission failed');
-
+            await api.applications.create(formData);
             setStatus('success');
             setFormData({ fullName: '', email: '', phone: '', loanAmount: '', purpose: '' });
         } catch (err) {

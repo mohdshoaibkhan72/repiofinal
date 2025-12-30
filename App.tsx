@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ModalProvider, useModal } from './contexts/ModalContext';
 import { RupivoPopup } from './components/form/RupivoPopup';
+import { ComingSoonPopup } from './components/ComingSoonPopup';
 import { Header } from './components/Header';
 import { Home } from './components/Home';
 import { StickyMobileCTA } from './components/StickyMobileCTA';
@@ -18,7 +19,7 @@ import { AdminPanel } from './components/pages/AdminPanel';
 import { AdminLogin } from './components/pages/AdminLogin';
 
 const AppContent: React.FC = () => {
-  const { isModalOpen, closeModal } = useModal();
+  const { isModalOpen, closeModal, isComingSoonOpen, closeComingSoon, comingSoonMessage } = useModal();
 
   return (
     <Router>
@@ -55,6 +56,7 @@ const AppContent: React.FC = () => {
         <Footer />
         <StickyMobileCTA />
         <RupivoPopup isOpen={isModalOpen} onClose={closeModal} />
+        <ComingSoonPopup isOpen={isComingSoonOpen} onClose={closeComingSoon} message={comingSoonMessage} />
       </div>
     </Router>
   );

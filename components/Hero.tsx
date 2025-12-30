@@ -12,7 +12,7 @@ const AppleIcon = () => (
 import { useModal } from '../contexts/ModalContext';
 
 export const Hero: React.FC = () => {
-  const { openModal } = useModal();
+  const { openModal, openComingSoon } = useModal();
   return (
     <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-32 overflow-hidden bg-rupivo-bg">
       {/* Background Ambience */}
@@ -50,7 +50,7 @@ export const Hero: React.FC = () => {
                 variant={ButtonVariant.PRIMARY}
                 icon={<Download size={20} />}
                 className="w-full sm:w-auto min-w-[200px] h-14 text-lg"
-                onClick={openModal}
+                onClick={() => openComingSoon("Our Android App is launching soon!")}
               >
                 Get Android App
               </Button>
@@ -59,7 +59,7 @@ export const Hero: React.FC = () => {
                 variant={ButtonVariant.PRIMARY}
                 icon={<AppleIcon />}
                 className="w-full sm:w-auto min-w-[200px] h-14 text-lg bg-black text-white hover:bg-gray-900 shadow-lg shadow-gray-900/20 hover:-translate-y-0.5 border border-transparent"
-                onClick={openModal}
+                onClick={() => openComingSoon("Our iOS App is launching soon!")}
               >
                 Get iOS App
               </Button>

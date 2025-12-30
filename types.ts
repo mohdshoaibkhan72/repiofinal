@@ -29,3 +29,17 @@ export enum ButtonVariant {
   OUTLINE = 'outline',
   WHATSAPP = 'whatsapp'
 }
+
+export interface PopupProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export interface EarlyAccessFormData {
+  fullName: string;
+  mobileNumber: string;
+  panNumber: string;
+  monthlyIncome: string;
+  city: string;
+  loanAmount: string;
+}
