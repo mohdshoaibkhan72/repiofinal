@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, Lock, ArrowRight, ShieldCheck, AlertCircle } from 'lucide-react';
-import logo from '../../logo.png';
 
 export const AdminLogin: React.FC = () => {
     // Pre-fill credentials for demo access as requested

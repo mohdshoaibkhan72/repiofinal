@@ -155,13 +155,13 @@ export const AboutUs: React.FC = () => (
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-10 max-w-[1200px] mx-auto">
+                <div className="flex flex-wrap w-full justify-center items-center gap-10 max-w-[1200px] mx-auto">
                     {[
                         { name: "Mohammad Anwar", role: "Founder", img: "Anwar", linkedin: "https://www.linkedin.com/in/ianwarmohammad/" },
-                        { name: "Vivek Aakash", role: "Head of Product", img: "Vivek", linkedin: "https://www.linkedin.com/" },
-                        { name: "Amjad Khan", role: "Head of Legal", img: "Amjad", linkedin: "https://www.linkedin.com/" },
+                        // { name: "Vivek Aakash", role: "Head of Product", img: "Vivek", linkedin: "https://www.linkedin.com/" },
+                        // { name: "Amjad Khan", role: "Head of Legal", img: "Amjad", linkedin: "https://www.linkedin.com/" },
                     ].map((leader, i) => (
-                        <div key={i} className="group relative bg-white rounded-[2.5rem] p-8 text-center border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+                        <div key={i} className="group relative bg-white rounded-[2.5rem] p-8 text-center border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden w-full md:w-[350px]">
                             <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-rupivo-blue/10 to-transparent"></div>
 
                             <div className="relative inline-block mb-6 mt-8">
