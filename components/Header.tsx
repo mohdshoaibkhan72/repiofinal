@@ -125,7 +125,7 @@ export const Header: React.FC = () => {
       <div className={`fixed inset-0 bg-white z-40 transform transition-transform duration-300 ease-in-out md:hidden ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'} pt-24 px-6`}>
         <div className="flex flex-col space-y-6">
           <Link to="/" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-bold text-rupivo-dark">Home</Link>
-          <Link to="/company/about" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-bold text-rupivo-dark">About Us</Link>
+          <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-bold text-rupivo-dark">About Us</Link>
           <button onClick={() => handleNavClick('how-it-works')} className="text-left text-2xl font-bold text-rupivo-dark">How it Works</button>
           <button onClick={() => handleNavClick('eligibility')} className="text-left text-2xl font-bold text-rupivo-dark">Eligibility</button>
           <button onClick={() => handleNavClick('support')} className="text-left text-2xl font-bold text-rupivo-dark">Support</button>
