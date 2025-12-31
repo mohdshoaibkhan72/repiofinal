@@ -804,7 +804,7 @@ export const ReferralPartner: React.FC = () => {
                                             <option>Other</option>
                                         </select>
                                     </div>
-                                    <Button fullWidth disabled={isLoading} className="h-16 text-lg rounded-xl mt-6 shadow-lg shadow-rupivo-blue/30 hover:shadow-xl hover:-translate-y-1 transition-all">
+                                    <Button type="submit" fullWidth disabled={isLoading} className="h-16 text-lg rounded-xl mt-6 shadow-lg shadow-rupivo-blue/30 hover:shadow-xl hover:-translate-y-1 transition-all">
                                         {isLoading ? 'Registering...' : 'Register Now'}
                                     </Button>
                                 </form>
