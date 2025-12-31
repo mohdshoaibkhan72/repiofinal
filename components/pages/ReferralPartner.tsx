@@ -247,7 +247,7 @@ export const ReferralPartner: React.FC = () => {
 
             {/* 2. TRUST STRIP */}
             <div className="w-full bg-white border-y border-gray-100 relative z-20 shadow-sm">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100">
                         {[
                             { icon: <Clock className="text-rupivo-blue" />, title: "Weekly Payouts", sub: "Every Tuesday" },
@@ -271,7 +271,7 @@ export const ReferralPartner: React.FC = () => {
 
             {/* 3. APP SHOWCASE */}
             <section className="py-24 lg:py-32 bg-rupivo-bg relative overflow-hidden">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
 
                         {/* Left: Content */}
@@ -471,7 +471,7 @@ export const ReferralPartner: React.FC = () => {
 
             {/* 4. EARNINGS CALCULATOR */}
             <section className="py-24 lg:py-32 bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
                         <div className="lg:col-span-7">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-blue-50 text-rupivo-blue text-xs font-bold uppercase tracking-wider mb-6">
@@ -560,7 +560,7 @@ export const ReferralPartner: React.FC = () => {
 
             {/* 5. EXCLUSIVE PERKS */}
             <section className="py-24 lg:py-32 bg-gray-50 border-t border-gray-200">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-extrabold text-rupivo-dark mb-4">More Than Just Commissions</h2>
                         <p className="text-gray-600 max-w-2xl mx-auto text-lg">Unlock exclusive rewards as you grow your business with us.</p>
@@ -597,7 +597,7 @@ export const ReferralPartner: React.FC = () => {
                     <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-rupivo-blue rounded-full blur-[100px]"></div>
                     <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-rupivo-green rounded-full blur-[100px]"></div>
                 </div>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="text-center mb-20">
                         <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6">Why Partners Choose Rupivo?</h2>
                         <div className="w-24 h-1.5 bg-gradient-to-r from-rupivo-blue to-rupivo-green mx-auto rounded-full"></div>
@@ -623,7 +623,7 @@ export const ReferralPartner: React.FC = () => {
 
             {/* 7. SECURITY & TRUST */}
             <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="bg-rupivo-dark rounded-[3rem] p-10 md:p-20 text-white relative overflow-hidden shadow-2xl">
                         {/* Background Decor */}
                         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-rupivo-blue/20 rounded-full blur-[120px] -mr-20 -mt-20"></div>
@@ -681,7 +681,7 @@ export const ReferralPartner: React.FC = () => {
 
             {/* 8. TESTIMONIALS (PARTNER SUCCESS STORIES) */}
             <section className="py-24 lg:py-32 bg-rupivo-bg relative overflow-hidden">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-extrabold text-rupivo-dark mb-4">Partner Success Stories</h2>
                         <div className="flex items-center justify-center gap-2 text-yellow-500 mb-2">

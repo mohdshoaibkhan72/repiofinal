@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { api } from '../../services/api';
+import { PageLayout } from '../PageLayout';
 
 export const LoanApplication: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -29,13 +30,8 @@ export const LoanApplication: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full mx-auto bg-white rounded-xl shadow-lg p-8 transform transition-all hover:scale-105 duration-300">
-                <div className="text-center mb-8">
-                    <h2 className="text-3xl font-extrabold text-gray-900">Apply for a Loan</h2>
-                    <p className="mt-2 text-sm text-gray-600">Get instant approval in minutes</p>
-                </div>
-
+        <PageLayout title="Apply for a Loan" subtitle="Get instant approval in minutes" maxWidth="max-w-[1200px]">
+            <div className="max-w-md w-full mx-auto bg-white rounded-xl shadow-lg p-8 transform transition-all hover:scale-105 duration-300 border border-gray-100">
                 {status === 'success' ? (
                     <div className="bg-green-50 border border-green-200 rounded-md p-4 mb-6">
                         <div className="flex">
@@ -130,6 +126,6 @@ export const LoanApplication: React.FC = () => {
                     </form>
                 )}
             </div>
-        </div>
+        </PageLayout>
     );
 };

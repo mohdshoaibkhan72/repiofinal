@@ -52,4 +52,35 @@ export const api = {
             return response.json();
         },
     },
+    contacts: {
+        create: async (data: any) => {
+            const response = await fetch(`${API_BASE_URL}/contacts`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            if (!response.ok) throw new Error('Failed to submit contact inquiry');
+            return response.json();
+        },
+
+        getAll: async () => {
+            const response = await fetch(`${API_BASE_URL}/contacts`);
+            if (!response.ok) throw new Error('Failed to fetch contacts');
+            return response.json();
+        },
+
+        updateStatus: async (id: string, status: string) => {
+            const response = await fetch(`${API_BASE_URL}/contacts/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ status }),
+            });
+            if (!response.ok) throw new Error('Failed to update contact status');
+            return response.json();
+        },
+    },
 };
