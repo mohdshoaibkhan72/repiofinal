@@ -1,20 +1,41 @@
 import React from 'react';
-import { Download, MessageCircle } from 'lucide-react';
+import { Zap, UserPlus } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 import { Button } from './Button';
 import { ButtonVariant } from '../types';
 import { useModal } from '../contexts/ModalContext';
 
 export const StickyMobileCTA: React.FC = () => {
-  const { openComingSoon } = useModal();
+  const { openModal } = useModal();
+  const location = useLocation();
+  const isPartnerPage = location.pathname === '/partner';
+
+  const handleMainAction = () => {
+    if (isPartnerPage) {
+      const element = document.getElementById('register');
+      if (element) {
+        const headerOffset = 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    } else {
+      openModal();
+    }
+  };
+
   return (
     <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-50 md:hidden flex gap-3">
       <Button
         variant={ButtonVariant.PRIMARY}
         className="flex-1 text-sm h-12"
-        icon={<Download size={18} />}
-        onClick={() => openComingSoon("Our mobile app is launching soon!")}
+        icon={isPartnerPage ? <UserPlus size={18} /> : <Zap size={18} />}
+        onClick={handleMainAction}
       >
-        Download App
+        {isPartnerPage ? "Join Partner Waitlist" : "Check Eligibility"}
       </Button>
       <button
         onClick={() => window.open('https://api.whatsapp.com/message/AO6VG6I5KX46C1?autoload=1&app_absent=0', '_blank')}
