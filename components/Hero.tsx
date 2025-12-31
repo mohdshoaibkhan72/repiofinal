@@ -19,7 +19,7 @@ const AppleStoreIcon = ({ className }: { className?: string }) => (
 export const Hero: React.FC = () => {
   const { openComingSoon } = useModal();
   return (
-    <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-32 overflow-hidden bg-rupivo-bg">
+    <section className="relative pt-10 pb-16 lg:pt-24 lg:pb-32 overflow-hidden bg-rupivo-bg">
       {/* Background Ambience */}
       <div className="absolute top-0 right-0 -mr-40 -mt-40 w-[800px] h-[800px] bg-gradient-to-br from-blue-100/40 to-teal-50/40 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
       <div className="absolute bottom-0 left-0 -ml-40 -mb-40 w-[600px] h-[600px] bg-gradient-to-tr from-purple-100/40 to-blue-50/40 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>

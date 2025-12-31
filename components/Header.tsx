@@ -92,9 +92,7 @@ export const Header: React.FC = () => {
               >
                 Support
               </button>
-              <Link to="/signin" className="bg-rupivo-dark/5 text-rupivo-dark px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-rupivo-dark/10 transition-all">
-                Sign In
-              </Link>
+
               <button
                 onClick={openModal}
                 className="bg-rupivo-blue text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-opacity-90 transition-all shadow-lg shadow-rupivo-blue/30"
