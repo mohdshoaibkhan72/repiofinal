@@ -262,7 +262,7 @@ export const GrievanceRedressal: React.FC = () => (
                         <div className="space-y-4 text-center border-t border-gray-50 pt-6">
                             <div>
                                 <p className="text-gray-800 font-bold">Mr. Amjad Khan </p>
-                                <p className="text-xs text-gray-500">Rupivo Technologies Pvt Ltd</p>
+                                <p className="text-xs text-gray-500">Aethos Fintech Private Limited</p>
                             </div>
                             <div>
                                 <p className="text-xs text-gray-400 font-bold uppercase">Email</p>

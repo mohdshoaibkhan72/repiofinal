@@ -78,7 +78,7 @@ export const ContactUs: React.FC = () => {
                 <div>
                   <h4 className="font-bold text-gray-900 text-lg">Visit Us</h4>
                   <p className="text-gray-600">
-                    Rupivo Technologies Pvt Ltd<br />
+                    Aethos Fintech Private Limited<br />
                     12th Main Rd, Indiranagar, Bangalore, 560038
                   </p>
                 </div>

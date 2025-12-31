@@ -24,11 +24,11 @@ export const AboutUs: React.FC = () => (
 
                     <div className="grid md:grid-cols-3 gap-8 mt-16 border-t border-gray-200 pt-12">
                         <div>
-                            <p className="text-4xl font-extrabold text-rupivo-dark mb-2">₹500Cr+</p>
+                            <p className="text-4xl font-extrabold text-rupivo-dark mb-2">₹10Cr+</p>
                             <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">Loan Disbursed</p>
                         </div>
                         <div className="md:border-l md:border-r border-gray-200">
-                            <p className="text-4xl font-extrabold text-rupivo-dark mb-2">10L+</p>
+                            <p className="text-4xl font-extrabold text-rupivo-dark mb-2">10k+</p>
                             <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">Happy Customers</p>
                         </div>
                         <div>
