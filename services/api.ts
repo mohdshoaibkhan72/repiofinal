@@ -11,7 +11,15 @@ export const api = {
                 },
                 body: JSON.stringify(data),
             });
-            if (!response.ok) throw new Error('Failed to create application');
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                const error: any = new Error(errorData.error || 'Failed to create application');
+                error.response = {
+                    status: response.status,
+                    data: errorData
+                };
+                throw error;
+            }
             return response.json();
         },
 

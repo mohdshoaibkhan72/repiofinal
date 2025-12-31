@@ -19,6 +19,7 @@ export const RupivoPopup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isLoading, setIsLoading] = useState(false);
 
   // Handle entry animation logic
   useEffect(() => {
@@ -34,6 +35,7 @@ export const RupivoPopup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
         loanAmount: ''
       });
       setErrors({});
+      setIsLoading(false);
       document.body.style.overflow = 'hidden';
     } else {
       const timer = setTimeout(() => setIsVisible(false), 300);
@@ -48,6 +50,8 @@ export const RupivoPopup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
   // Step 1: Mobile Handler
   const handleMobileSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isLoading) return;
+
     if (!formData.mobileNumber) {
       setErrors({ mobileNumber: 'Mobile number is required' });
       return;
@@ -61,6 +65,7 @@ export const RupivoPopup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
       return;
     }
 
+    setIsLoading(true);
     try {
       // Save the mobile number immediately
       await api.applications.create({ phone: formData.mobileNumber });
@@ -74,6 +79,8 @@ export const RupivoPopup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
         // Optional: allow proceeding anyway if backend is down, or show generic error
         setErrors({ mobileNumber: 'Something went wrong. Please try again.' });
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -120,8 +127,17 @@ export const RupivoPopup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
           fullName: formData.fullName,
           email: "popup_user@example.com", // You might want this to be dynamic or optional
           phone: formData.mobileNumber,
-          loanAmount: parseFloat(formData.loanAmount.replace(/[^0-9]/g, '')) || 0,
-          purpose: `Early Access - Income: ${formData.monthlyIncome}, City: ${formData.city}, PAN: ${formData.panNumber}`
+          loanAmount: (() => {
+            const map: Record<string, number> = {
+              '50k-1L': 50000,
+              '1L-5L': 100000,
+              '5L-10L': 500000,
+              '10L-25L': 1000000,
+              '25L+': 2500000
+            };
+            return map[formData.loanAmount] || 0;
+          })(),
+          purpose: `Early Access - Income: ${formData.monthlyIncome}, City: ${formData.city}, PAN: ${formData.panNumber}, Loan Range: ${formData.loanAmount}`
         });
 
 
@@ -299,9 +315,18 @@ export const RupivoPopup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
                   />
                   <button
                     type="submit"
-                    className="h-[52px] w-full rounded-[12px] bg-[#0B1F3B] text-[15px] font-semibold text-white shadow-sm transition-transform active:scale-[0.98] hover:opacity-90 mt-2"
+                    disabled={isLoading}
+                    className={`h-[52px] w-full rounded-[12px] bg-[#0B1F3B] text-[15px] font-semibold text-white shadow-sm transition-transform active:scale-[0.98] hover:opacity-90 mt-2 flex items-center justify-center gap-2 ${isLoading ? 'opacity-80 cursor-not-allowed' : ''}`}
                   >
-                    Proceed
+                    {isLoading ? (
+                      <>
+                        <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Wait...
+                      </>
+                    ) : 'Proceed'}
                   </button>
                   <p className="text-center text-[11px] text-[#9CA3AF]">
                     By continuing, you agree to our Terms & Conditions
@@ -312,6 +337,20 @@ export const RupivoPopup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
               {/* Step 2: Details */}
               {step === 2 && (
                 <form onSubmit={handleDetailsSubmit} noValidate className="flex flex-col gap-3">
+                  {/* Read-Only Mobile Number */}
+                  <div className="relative">
+                    <InputText
+                      name="mobileNumber"
+                      value={formData.mobileNumber}
+                      readOnly
+                      className="bg-gray-50 text-gray-500 font-medium"
+                      placeholder="Mobile Number"
+                    />
+                    <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                      <span className="text-sm text-green-600 font-medium">Verified</span>
+                    </div>
+                  </div>
+
                   {/* Full Name */}
                   <InputText
                     name="fullName"
@@ -370,6 +409,8 @@ export const RupivoPopup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
                       { value: '50k-1L', label: '₹50,000 – ₹1,00,000' },
                       { value: '1L-5L', label: '₹1,00,000 – ₹5,00,000' },
                       { value: '5L-10L', label: '₹5,00,000 – ₹10,00,000' },
+                      { value: '10L-25L', label: '₹10,00,000 – ₹25,00,000' },
+                      { value: '25L+', label: 'Above ₹25,00,000' },
                     ]}
                   />
 
@@ -382,7 +423,7 @@ export const RupivoPopup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
 
                   <div className="flex justify-center mt-2">
                     <button type="button" onClick={() => setStep(1)} className="text-[12px] text-[#6B7280] hover:text-[#0B1F3B]">
-                      Back to Mobile
+                      Edit Mobile Number
                     </button>
                   </div>
                 </form>

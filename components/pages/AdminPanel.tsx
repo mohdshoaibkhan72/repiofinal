@@ -114,8 +114,8 @@ export const AdminPanel: React.FC = () => {
         <button
             onClick={() => setActiveTab(id)}
             className={`w-full flex items-center gap-3 px-6 py-4 transition-all duration-200 border-l-4 ${activeTab === id
-                    ? 'bg-blue-50 border-rupivo-blue text-rupivo-blue font-bold shadow-sm'
-                    : 'border-transparent text-gray-500 hover:bg-gray-50 hover:text-gray-900 font-medium'
+                ? 'bg-blue-50 border-rupivo-blue text-rupivo-blue font-bold shadow-sm'
+                : 'border-transparent text-gray-500 hover:bg-gray-50 hover:text-gray-900 font-medium'
                 }`}
         >
             <Icon size={20} />
@@ -222,16 +222,22 @@ export const AdminPanel: React.FC = () => {
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 mt-4">
                                                     <div className="flex items-center text-sm text-gray-600 gap-2"><Mail size={16} className="text-gray-400" /> {app.email}</div>
                                                     <div className="flex items-center text-sm text-gray-600 gap-2"><Phone size={16} className="text-gray-400" /> {app.phone}</div>
-                                                    <div className="flex items-center text-sm text-gray-600 gap-2"><IndianRupee size={16} className="text-gray-400" /> <strong>{app.loanAmount.toLocaleString()}</strong> Loan Amount</div>
+                                                    <div className="flex items-center text-sm text-gray-600 gap-2"><IndianRupee size={16} className="text-gray-400" /> <strong>{app.loanAmount.toLocaleString()}</strong> (Min)</div>
                                                     <div className="flex items-center text-sm text-gray-600 gap-2"><Calendar size={16} className="text-gray-400" /> {formatDate(app.createdAt)}</div>
+                                                </div>
+
+                                                {/* Loan Range Display */}
+                                                <div className="mt-3 flex items-center gap-2 text-sm text-gray-700 bg-blue-50 px-3 py-2 rounded-lg w-fit">
+                                                    <span className="font-bold text-rupivo-blue tracking-wide">Selected Range:</span>
+                                                    <span>{app.purpose.match(/Loan Range: (.*)/)?.[1] || 'N/A'}</span>
                                                 </div>
 
                                                 <div className="mt-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
                                                     <div className="flex items-start gap-2">
                                                         <FileText size={16} className="text-gray-400 mt-1 shrink-0" />
                                                         <div>
-                                                            <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Purpose</span>
-                                                            <p className="text-gray-700 text-sm mt-1">{app.purpose || 'No purpose specified.'}</p>
+                                                            <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Details</span>
+                                                            <p className="text-gray-700 text-sm mt-1">{app.purpose.replace(/, Loan Range: .*/, '') || 'No details specified.'}</p>
                                                         </div>
                                                     </div>
                                                 </div>
