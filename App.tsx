@@ -23,7 +23,7 @@ const AppContent: React.FC = () => {
 
   return (
     <Router>
-      <div className="min-h-screen flex flex-col font-sans">
+      <div className="min-h-screen flex flex-col font-sans pb-24 md:pb-0 overflow-x-hidden">
         <Header />
         <main className="flex-grow">
           <Routes>

@@ -19,17 +19,17 @@ const AppleStoreIcon = ({ className }: { className?: string }) => (
 export const Hero: React.FC = () => {
   const { openComingSoon } = useModal();
   return (
-    <section className="relative pt-10 pb-16 lg:pt-24 lg:pb-32 overflow-hidden bg-rupivo-bg">
+    <section className="relative pt-36 pb-12 lg:pt-24 lg:pb-32 overflow-hidden bg-rupivo-bg">
       {/* Background Ambience */}
       <div className="absolute top-0 right-0 -mr-40 -mt-40 w-[800px] h-[800px] bg-gradient-to-br from-blue-100/40 to-teal-50/40 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
       <div className="absolute bottom-0 left-0 -ml-40 -mb-40 w-[600px] h-[600px] bg-gradient-to-tr from-purple-100/40 to-blue-50/40 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
 
           {/* Left Content */}
           <div className="w-full lg:w-1/2 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-white border border-blue-100 shadow-sm animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white border border-blue-100 shadow-sm animate-fade-in-up">
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rupivo-green opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-rupivo-green"></span>
@@ -39,18 +39,22 @@ export const Hero: React.FC = () => {
               </span>
             </div>
 
-            <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-rupivo-dark mb-6 leading-[1.1]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-rupivo-dark mb-4 leading-[1.1]">
               Instant Personal Loans.<br className="hidden lg:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-rupivo-blue to-rupivo-lightBlue">Clear Eligibility. Fast Decisions.</span>
             </h1>
 
-            <p className="text-lg lg:text-xl text-gray-600 mb-4 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
+            <p className="text-lg lg:text-xl text-gray-600 mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
               Check your loan eligibility in minutes — fully digital, no branch visits, no agent pressure.
             </p>
 
-            <p className="text-sm font-semibold text-gray-500 mb-10 flex items-center justify-center lg:justify-start gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-rupivo-green inline-block"></span>
-              Loan amount ₹50,000 – ₹10,00,000 <span className="mx-1 opacity-30">|</span> Multiple RBI-regulated lending partners
+            <p className="text-sm font-semibold text-gray-500 mb-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2">
+              <span className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-rupivo-green inline-block"></span>
+                Loan amount ₹50,000 – ₹10,00,000
+              </span>
+              <span className="hidden sm:inline mx-1 opacity-30">|</span>
+              <span>Multiple RBI-regulated lending partners</span>
             </p>
 
             {/* Buttons - Redesigned to look like store badges */}
@@ -82,7 +86,7 @@ export const Hero: React.FC = () => {
               {/* WhatsApp Button */}
               <Button
                 variant={ButtonVariant.WHATSAPP}
-                icon={<MessageCircle size={24} />}
+                icon={<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="w-6 h-6" />}
                 className="w-full sm:w-auto min-w-[200px] h-[60px] text-lg rounded-2xl"
                 onClick={() => window.open('https://api.whatsapp.com/message/AO6VG6I5KX46C1?autoload=1&app_absent=0', '_blank')}
               >

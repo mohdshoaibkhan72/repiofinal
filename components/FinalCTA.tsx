@@ -98,7 +98,7 @@ export const FinalCTA: React.FC = () => {
             <Button
               variant={ButtonVariant.WHATSAPP}
               className="w-full sm:w-auto min-w-[280px] rounded-full h-14 text-lg font-bold shadow-[0_0_20px_rgba(37,211,102,0.4)] border border-white/10"
-              icon={<MessageCircle size={24} />}
+              icon={<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="w-6 h-6" />}
               onClick={() => window.open('https://api.whatsapp.com/message/AO6VG6I5KX46C1?autoload=1&app_absent=0', '_blank')}
             >
               Chat on WhatsApp

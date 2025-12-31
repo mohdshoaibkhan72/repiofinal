@@ -16,14 +16,17 @@ export const StickyMobileCTA: React.FC = () => {
       >
         Download App
       </Button>
-      <Button
-        variant={ButtonVariant.WHATSAPP}
-        className="w-12 px-0 h-12 flex items-center justify-center rounded-lg"
-        aria-label="WhatsApp"
+      <button
         onClick={() => window.open('https://api.whatsapp.com/message/AO6VG6I5KX46C1?autoload=1&app_absent=0', '_blank')}
+        className="w-12 h-12 flex items-center justify-center rounded-lg bg-[#25D366] text-white shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.23)] hover:-translate-y-0.5 transition-all duration-300"
+        aria-label="WhatsApp"
       >
-        <MessageCircle size={24} />
-      </Button>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/512px-WhatsApp.svg.png"
+          alt="WhatsApp"
+          className="w-8 h-8 object-contain"
+        />
+      </button>
     </div>
   );
 };
