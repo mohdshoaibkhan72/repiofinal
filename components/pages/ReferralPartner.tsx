@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { Button } from '../Button';
 import { ButtonVariant } from '../../types';
+import { api } from '../../services/api';
 
 // Icons for App Stores
 const PlayStoreIcon = ({ className }: { className?: string }) => (
@@ -41,6 +42,23 @@ export const ReferralPartner: React.FC = () => {
         city: '',
         profession: 'Financial Advisor'
     });
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsLoading(true);
+        try {
+            await api.partners.create(regForm);
+            alert("Registration Successful! We will contact you shortly.");
+            setRegForm({ firstName: '', lastName: '', mobile: '', city: '', profession: 'Financial Advisor' });
+        } catch (error) {
+            console.error(error);
+            alert("Registration failed. Please try again.");
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     const handleRegChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setRegForm({ ...regForm, [e.target.name]: e.target.value });
@@ -757,28 +775,28 @@ export const ReferralPartner: React.FC = () => {
                             </div>
 
                             <div className="bg-white p-8 md:p-10 rounded-[2rem] text-gray-800 shadow-xl relative">
-                                <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+                                <form className="space-y-5" onSubmit={handleSubmit}>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>
                                             <label className="block text-xs font-bold text-gray-500 uppercase mb-1.5 ml-1 tracking-wide">First Name</label>
-                                            <input type="text" value={regForm.firstName} onChange={handleRegChange} name="firstName" className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-rupivo-blue/20 outline-none transition-all font-bold text-gray-800 placeholder-gray-300" />
+                                            <input type="text" value={regForm.firstName} onChange={handleRegChange} name="firstName" required className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-rupivo-blue/20 outline-none transition-all font-bold text-gray-800 placeholder-gray-300" />
                                         </div>
                                         <div>
                                             <label className="block text-xs font-bold text-gray-500 uppercase mb-1.5 ml-1 tracking-wide">Last Name</label>
-                                            <input type="text" value={regForm.lastName} onChange={handleRegChange} name="lastName" className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-rupivo-blue/20 outline-none transition-all font-bold text-gray-800 placeholder-gray-300" />
+                                            <input type="text" value={regForm.lastName} onChange={handleRegChange} name="lastName" required className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-rupivo-blue/20 outline-none transition-all font-bold text-gray-800 placeholder-gray-300" />
                                         </div>
                                     </div>
                                     <div>
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-1.5 ml-1 tracking-wide">Mobile Number</label>
-                                        <input type="tel" value={regForm.mobile} onChange={handleRegChange} name="mobile" className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-rupivo-blue/20 outline-none transition-all font-bold text-gray-800 placeholder-gray-300" />
+                                        <input type="tel" value={regForm.mobile} onChange={handleRegChange} name="mobile" required className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-rupivo-blue/20 outline-none transition-all font-bold text-gray-800 placeholder-gray-300" />
                                     </div>
                                     <div>
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-1.5 ml-1 tracking-wide">City</label>
-                                        <input type="text" value={regForm.city} onChange={handleRegChange} name="city" className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-rupivo-blue/20 outline-none transition-all font-bold text-gray-800 placeholder-gray-300" />
+                                        <input type="text" value={regForm.city} onChange={handleRegChange} name="city" required className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-rupivo-blue/20 outline-none transition-all font-bold text-gray-800 placeholder-gray-300" />
                                     </div>
                                     <div>
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-1.5 ml-1 tracking-wide">Profession</label>
-                                        <select name="profession" value={regForm.profession} onChange={handleRegChange} className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-rupivo-blue/20 outline-none transition-all font-bold text-gray-800 appearance-none">
+                                        <select name="profession" value={regForm.profession} onChange={handleRegChange} required className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-rupivo-blue/20 outline-none transition-all font-bold text-gray-800 appearance-none">
                                             <option>Financial Advisor</option>
                                             <option>DSA / Loan Agent</option>
                                             <option>Insurance Agent</option>
@@ -786,7 +804,9 @@ export const ReferralPartner: React.FC = () => {
                                             <option>Other</option>
                                         </select>
                                     </div>
-                                    <Button fullWidth className="h-16 text-lg rounded-xl mt-6 shadow-lg shadow-rupivo-blue/30 hover:shadow-xl hover:-translate-y-1 transition-all">Register Now</Button>
+                                    <Button fullWidth disabled={isLoading} className="h-16 text-lg rounded-xl mt-6 shadow-lg shadow-rupivo-blue/30 hover:shadow-xl hover:-translate-y-1 transition-all">
+                                        {isLoading ? 'Registering...' : 'Register Now'}
+                                    </Button>
                                 </form>
                             </div>
                         </div>

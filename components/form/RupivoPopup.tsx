@@ -125,7 +125,7 @@ export const RupivoPopup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
       try {
         await api.applications.create({
           fullName: formData.fullName,
-          email: "popup_user@example.com", // You might want this to be dynamic or optional
+          email: "",
           phone: formData.mobileNumber,
           loanAmount: (() => {
             const map: Record<string, number> = {

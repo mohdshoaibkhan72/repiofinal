@@ -50,6 +50,7 @@ router.get('/', async (req, res) => {
 });
 
 // PUT: Update status (For Admin Panel)
+// PUT: Update status (For Admin Panel)
 router.put('/:id', async (req, res) => {
     try {
         const updatedApp = await Application.findByIdAndUpdate(
@@ -58,6 +59,16 @@ router.put('/:id', async (req, res) => {
             { new: true }
         );
         res.json(updatedApp);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// DELETE: Delete an application
+router.delete('/:id', async (req, res) => {
+    try {
+        await Application.findByIdAndDelete(req.params.id);
+        res.json({ message: 'Application deleted successfully' });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }

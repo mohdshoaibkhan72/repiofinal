@@ -17,7 +17,8 @@ import {
     Briefcase,
     IndianRupee,
     FileText,
-    Calendar
+    Calendar,
+    Trash2
 } from 'lucide-react';
 
 interface Application {
@@ -100,6 +101,16 @@ export const AdminPanel: React.FC = () => {
             fetchData();
         } catch (err) {
             console.error('Failed to update contact status', err);
+        }
+    };
+
+    const deleteApplication = async (id: string) => {
+        if (!window.confirm("Are you sure you want to delete this application?")) return;
+        try {
+            await api.applications.delete(id);
+            fetchData();
+        } catch (err) {
+            console.error('Failed to delete application', err);
         }
     };
 
@@ -222,14 +233,14 @@ export const AdminPanel: React.FC = () => {
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 mt-4">
                                                     <div className="flex items-center text-sm text-gray-600 gap-2"><Mail size={16} className="text-gray-400" /> {app.email}</div>
                                                     <div className="flex items-center text-sm text-gray-600 gap-2"><Phone size={16} className="text-gray-400" /> {app.phone}</div>
-                                                    <div className="flex items-center text-sm text-gray-600 gap-2"><IndianRupee size={16} className="text-gray-400" /> <strong>{app.loanAmount.toLocaleString()}</strong> (Min)</div>
+                                                    <div className="flex items-center text-sm text-gray-600 gap-2"><IndianRupee size={16} className="text-gray-400" /> <strong>{(app.loanAmount || 0).toLocaleString()}</strong> (Min)</div>
                                                     <div className="flex items-center text-sm text-gray-600 gap-2"><Calendar size={16} className="text-gray-400" /> {formatDate(app.createdAt)}</div>
                                                 </div>
 
                                                 {/* Loan Range Display */}
                                                 <div className="mt-3 flex items-center gap-2 text-sm text-gray-700 bg-blue-50 px-3 py-2 rounded-lg w-fit">
                                                     <span className="font-bold text-rupivo-blue tracking-wide">Selected Range:</span>
-                                                    <span>{app.purpose.match(/Loan Range: (.*)/)?.[1] || 'N/A'}</span>
+                                                    <span>{(app.purpose || '').match(/Loan Range: (.*)/)?.[1] || 'N/A'}</span>
                                                 </div>
 
                                                 <div className="mt-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
@@ -237,7 +248,7 @@ export const AdminPanel: React.FC = () => {
                                                         <FileText size={16} className="text-gray-400 mt-1 shrink-0" />
                                                         <div>
                                                             <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Details</span>
-                                                            <p className="text-gray-700 text-sm mt-1">{app.purpose.replace(/, Loan Range: .*/, '') || 'No details specified.'}</p>
+                                                            <p className="text-gray-700 text-sm mt-1">{(app.purpose || '').replace(/, Loan Range: .*/, '') || 'No details specified.'}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -267,6 +278,12 @@ export const AdminPanel: React.FC = () => {
                                                         <RotateCcw size={16} /> Reset
                                                     </button>
                                                 )}
+                                                <button
+                                                    onClick={() => deleteApplication(app._id)}
+                                                    className="flex-1 lg:flex-none flex items-center justify-center gap-2 px-5 py-2.5 bg-white border border-gray-200 text-gray-400 rounded-xl text-sm font-bold hover:bg-red-50 hover:text-red-500 hover:border-red-100 transition-colors"
+                                                >
+                                                    <Trash2 size={16} /> Delete
+                                                </button>
                                             </div>
                                         </div>
                                     </div>

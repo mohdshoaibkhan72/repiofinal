@@ -40,6 +40,14 @@ export const api = {
             if (!response.ok) throw new Error('Failed to update application status');
             return response.json();
         },
+
+        delete: async (id: string) => {
+            const response = await fetch(`${API_BASE_URL}/applications/${id}`, {
+                method: 'DELETE',
+            });
+            if (!response.ok) throw new Error('Failed to delete application');
+            return response.json();
+        },
     },
     partners: {
         create: async (data: any) => {
