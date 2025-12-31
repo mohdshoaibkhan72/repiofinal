@@ -2,6 +2,7 @@ import React from 'react';
 import { MessageCircle, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { Button } from './Button';
 import { ButtonVariant } from '../types';
+import { useModal } from '../contexts/ModalContext';
 
 // Vector Icons for Store Badges
 const PlayStoreIcon = () => (
@@ -16,10 +17,8 @@ const AppleIcon = () => (
   </svg>
 );
 
-import { useModal } from '../contexts/ModalContext';
-
 export const FinalCTA: React.FC = () => {
-  const { openModal } = useModal();
+  const { openComingSoon } = useModal();
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden bg-rupivo-dark isolate">
       {/* Background Effects */}
@@ -58,7 +57,10 @@ export const FinalCTA: React.FC = () => {
           {/* Primary Actions - High Visibility Store Badges */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full mb-12">
             {/* Android Button */}
-            <button onClick={openModal} className="group flex items-center justify-start gap-4 bg-white text-rupivo-dark hover:bg-gray-50 px-6 py-3.5 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 shadow-[0_20px_40px_-15px_rgba(255,255,255,0.2)] hover:shadow-[0_25px_50px_-12px_rgba(255,255,255,0.3)] min-w-[240px] w-full sm:w-auto border-2 border-transparent relative overflow-hidden">
+            <button
+              onClick={() => openComingSoon("Our Android App is launching soon!")}
+              className="group flex items-center justify-start gap-4 bg-white text-rupivo-dark hover:bg-gray-50 px-6 py-3.5 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 shadow-[0_20px_40px_-15px_rgba(255,255,255,0.2)] hover:shadow-[0_25px_50px_-12px_rgba(255,255,255,0.3)] min-w-[240px] w-full sm:w-auto border-2 border-transparent relative overflow-hidden"
+            >
               <div className="absolute inset-0 bg-gradient-to-r from-gray-50 to-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="group-hover:scale-110 transition-transform duration-300 text-rupivo-dark relative z-10">
                 <PlayStoreIcon />
@@ -70,7 +72,10 @@ export const FinalCTA: React.FC = () => {
             </button>
 
             {/* iOS Button */}
-            <button onClick={openModal} className="group flex items-center justify-start gap-4 bg-black border border-white/20 text-white hover:bg-gray-900 px-6 py-3.5 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-black/30 min-w-[240px] w-full sm:w-auto relative overflow-hidden">
+            <button
+              onClick={() => openComingSoon("Our iOS App is launching soon!")}
+              className="group flex items-center justify-start gap-4 bg-black border border-white/20 text-white hover:bg-gray-900 px-6 py-3.5 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-black/30 min-w-[240px] w-full sm:w-auto relative overflow-hidden"
+            >
               <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="group-hover:scale-110 transition-transform duration-300 relative z-10">
                 <AppleIcon />

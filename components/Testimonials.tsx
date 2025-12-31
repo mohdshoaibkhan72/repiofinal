@@ -69,11 +69,11 @@ export const Testimonials: React.FC = () => {
               <p className="text-gray-700 text-sm leading-relaxed mb-6 font-medium flex-grow">"{review.text}"</p>
 
               <div className="flex items-center gap-3 mt-auto pt-4 border-t border-gray-50">
-                <div className="w-10 h-10 rounded-full bg-gray-100 p-0.5 border border-gray-200 shrink-0">
+                <div className="w-12 h-12 rounded-full bg-gray-100 p-0.5 border border-gray-200 shrink-0">
                   <img 
                     src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${review.avatarSeed}`} 
                     alt={review.name}
-                    className="rounded-full"
+                    className="rounded-full w-full h-full object-cover"
                   />
                 </div>
                 <div>

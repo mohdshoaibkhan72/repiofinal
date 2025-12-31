@@ -71,21 +71,30 @@ export const Header: React.FC = () => {
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center space-x-10">
-              <button onClick={() => handleNavClick('how-it-works')} className="text-gray-600 hover:text-rupivo-blue font-semibold transition-colors text-sm tracking-wide">
+              <button
+                onClick={() => handleNavClick('how-it-works')}
+                className="text-gray-600 hover:text-rupivo-blue font-semibold transition-colors text-sm tracking-wide"
+                aria-label="Scroll to How it Works section"
+              >
                 How it Works
               </button>
-              <button onClick={() => handleNavClick('eligibility')} className="text-gray-600 hover:text-rupivo-blue font-semibold transition-colors text-sm tracking-wide">
+              <button
+                onClick={() => handleNavClick('eligibility')}
+                className="text-gray-600 hover:text-rupivo-blue font-semibold transition-colors text-sm tracking-wide"
+                aria-label="Scroll to Eligibility section"
+              >
                 Eligibility
               </button>
-              <button onClick={() => handleNavClick('support')} className="text-gray-600 hover:text-rupivo-blue font-semibold transition-colors text-sm tracking-wide">
+              <button
+                onClick={() => handleNavClick('support')}
+                className="text-gray-600 hover:text-rupivo-blue font-semibold transition-colors text-sm tracking-wide"
+                aria-label="Scroll to Support section"
+              >
                 Support
               </button>
-              <button
-                onClick={() => openComingSoon("Sign In is launching soon! stay tuned.")}
-                className="bg-rupivo-dark/5 text-rupivo-dark px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-rupivo-dark/10 transition-all"
-              >
+              <Link to="/signin" className="bg-rupivo-dark/5 text-rupivo-dark px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-rupivo-dark/10 transition-all">
                 Sign In
-              </button>
+              </Link>
               <button
                 onClick={openModal}
                 className="bg-rupivo-blue text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-opacity-90 transition-all shadow-lg shadow-rupivo-blue/30"
@@ -99,6 +108,7 @@ export const Header: React.FC = () => {
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2 text-rupivo-dark hover:bg-gray-100 rounded-lg transition-colors"
+                aria-label="Toggle mobile menu"
               >
                 {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -114,7 +124,7 @@ export const Header: React.FC = () => {
           <button onClick={() => handleNavClick('how-it-works')} className="text-left text-2xl font-bold text-rupivo-dark">How it Works</button>
           <button onClick={() => handleNavClick('eligibility')} className="text-left text-2xl font-bold text-rupivo-dark">Eligibility</button>
           <button onClick={() => handleNavClick('support')} className="text-left text-2xl font-bold text-rupivo-dark">Support</button>
-          <button onClick={() => { setMobileMenuOpen(false); openComingSoon("Sign In is launching soon! stay tuned."); }} className="text-left text-2xl font-bold text-rupivo-dark">Sign In</button>
+          <Link to="/signin" onClick={() => setMobileMenuOpen(false)} className="text-left text-2xl font-bold text-rupivo-dark">Sign In</Link>
           <button
             onClick={() => { setMobileMenuOpen(false); openModal(); }}
             className="text-left text-2xl font-bold text-rupivo-blue"
@@ -123,7 +133,7 @@ export const Header: React.FC = () => {
           </button>
           <hr className="border-gray-100" />
           <button
-            onClick={() => { setMobileMenuOpen(false); openComingSoon("Our mobile app is coming soon!"); }}
+            onClick={() => { setMobileMenuOpen(false); openComingSoon("Our mobile app is launching soon!"); }}
             className="w-full bg-rupivo-blue text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-rupivo-blue/30"
           >
             Download App

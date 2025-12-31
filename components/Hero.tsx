@@ -1,18 +1,23 @@
 import React from 'react';
-import { Download, MessageCircle, Star, ArrowRight, ShieldCheck, Flag } from 'lucide-react';
+import { MessageCircle, Star, ArrowRight, ShieldCheck, Flag } from 'lucide-react';
 import { Button } from './Button';
 import { ButtonVariant } from '../types';
+import { useModal } from '../contexts/ModalContext';
 
-const AppleIcon = () => (
-  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.2604 15.3406C17.2865 14.1678 17.9427 13.0858 18.9167 12.4842C18.4219 11.7698 17.7188 11.2334 16.9271 11.0823C15.8698 10.8739 14.8542 11.6916 14.3333 11.6916C13.7865 11.6916 12.9115 10.9833 12.0677 10.9989C10.9375 11.0197 9.875 11.6499 9.30208 12.6249C8.125 14.6509 9.03125 17.6353 10.1667 19.2968C10.7292 20.1093 11.3906 21.0051 12.2813 20.9739C13.125 20.9426 13.4427 20.4322 14.4635 20.4322C15.4844 20.4322 15.776 20.9739 16.6823 20.9583C17.5885 20.9426 18.1563 20.1406 18.7083 19.3281C19.349 18.3906 19.6146 17.4791 19.6354 17.4374C19.6094 17.427 18.0677 16.8333 18.0677 15.0281V15.3406ZM15.0104 9.47392C15.4531 8.93746 15.75 8.18746 15.6667 7.44788C14.9792 7.53121 14.151 7.91663 13.6615 8.49996C13.2344 8.99996 12.8594 9.77079 12.9688 10.5104C13.7292 10.5677 14.5365 10.1302 15.0104 9.47392Z" />
+const GooglePlayIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 512 512" className={className} fill="currentColor">
+    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
   </svg>
 );
 
-import { useModal } from '../contexts/ModalContext';
+const AppleStoreIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 384 512" className={className} fill="currentColor">
+    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 52.3-11.4 69.5-34.3z" />
+  </svg>
+);
 
 export const Hero: React.FC = () => {
-  const { openModal, openComingSoon } = useModal();
+  const { openComingSoon } = useModal();
   return (
     <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-32 overflow-hidden bg-rupivo-bg">
       {/* Background Ambience */}
@@ -34,40 +39,51 @@ export const Hero: React.FC = () => {
               </span>
             </div>
 
-            <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-rupivo-dark mb-8 leading-[1.1]">
-              Money when <br className="hidden lg:block" />
-              you <span className="text-transparent bg-clip-text bg-gradient-to-r from-rupivo-blue to-rupivo-lightBlue">need it.</span>
+            <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-rupivo-dark mb-6 leading-[1.1]">
+              Instant Personal Loans.<br className="hidden lg:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-rupivo-blue to-rupivo-lightBlue">Clear Eligibility. Fast Decisions.</span>
             </h1>
 
-            <p className="text-lg lg:text-xl text-gray-600 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
-              Check your eligibility in 30 seconds. No paperwork, no hidden fees.
-              Just instant approvals and money in your bank.
+            <p className="text-lg lg:text-xl text-gray-600 mb-4 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
+              Check your loan eligibility in minutes — fully digital, no branch visits, no agent pressure.
             </p>
 
-            {/* Buttons */}
+            <p className="text-sm font-semibold text-gray-500 mb-10 flex items-center justify-center lg:justify-start gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-rupivo-green inline-block"></span>
+              Loan amount ₹50,000 – ₹10,00,000 <span className="mx-1 opacity-30">|</span> Multiple RBI-regulated lending partners
+            </p>
+
+            {/* Buttons - Redesigned to look like store badges */}
             <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-4 mb-8">
-              <Button
-                variant={ButtonVariant.PRIMARY}
-                icon={<Download size={20} />}
-                className="w-full sm:w-auto min-w-[200px] h-14 text-lg"
+              {/* Google Play Button */}
+              <button
                 onClick={() => openComingSoon("Our Android App is launching soon!")}
+                className="flex items-center gap-3 bg-rupivo-dark text-white px-5 py-3 rounded-2xl hover:bg-gray-800 transition-all shadow-lg shadow-gray-900/20 hover:shadow-xl hover:-translate-y-1 w-full sm:w-auto min-w-[200px] border border-transparent group h-[60px]"
               >
-                Get Android App
-              </Button>
+                <GooglePlayIcon className="w-8 h-8 text-white group-hover:scale-110 transition-transform" />
+                <div className="text-left flex flex-col justify-center">
+                  <div className="text-[10px] font-bold uppercase tracking-wider opacity-80 leading-none mb-1">Get it on</div>
+                  <div className="text-xl font-bold leading-none font-sans">Google Play</div>
+                </div>
+              </button>
 
-              <Button
-                variant={ButtonVariant.PRIMARY}
-                icon={<AppleIcon />}
-                className="w-full sm:w-auto min-w-[200px] h-14 text-lg bg-black text-white hover:bg-gray-900 shadow-lg shadow-gray-900/20 hover:-translate-y-0.5 border border-transparent"
+              {/* App Store Button */}
+              <button
                 onClick={() => openComingSoon("Our iOS App is launching soon!")}
+                className="flex items-center gap-3 bg-black text-white px-5 py-3 rounded-2xl hover:bg-gray-900 transition-all shadow-lg shadow-gray-900/20 hover:shadow-xl hover:-translate-y-1 w-full sm:w-auto min-w-[200px] border border-white/10 group h-[60px]"
               >
-                Get iOS App
-              </Button>
+                <AppleStoreIcon className="w-8 h-8 text-white group-hover:scale-110 transition-transform" />
+                <div className="text-left flex flex-col justify-center">
+                  <div className="text-[10px] font-bold uppercase tracking-wider opacity-80 leading-none mb-1">Download on the</div>
+                  <div className="text-xl font-bold leading-none font-sans">App Store</div>
+                </div>
+              </button>
 
+              {/* WhatsApp Button */}
               <Button
                 variant={ButtonVariant.WHATSAPP}
-                icon={<MessageCircle size={20} />}
-                className="w-full sm:w-auto min-w-[200px] h-14 text-lg"
+                icon={<MessageCircle size={24} />}
+                className="w-full sm:w-auto min-w-[200px] h-[60px] text-lg rounded-2xl"
                 onClick={() => window.open('https://api.whatsapp.com/message/AO6VG6I5KX46C1?autoload=1&app_absent=0', '_blank')}
               >
                 Check on WhatsApp
