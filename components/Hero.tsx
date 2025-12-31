@@ -129,17 +129,17 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Right Content - Premium 3D Mockup */}
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end relative perspective-1000">
-            <div className="relative w-[300px] sm:w-[340px] h-[640px] sm:h-[680px] bg-gray-900 rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(50,50,93,0.5)] border-[10px] border-gray-900 overflow-hidden ring-1 ring-gray-900/10 transform rotate-[-6deg] hover:rotate-0 transition-all duration-700 ease-out z-20">
+          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end relative perspective-1000 mt-12 lg:mt-0">
+            <div className="relative w-[280px] xs:w-[300px] sm:w-[340px] h-[580px] xs:h-[640px] sm:h-[680px] bg-gray-900 rounded-[3rem] sm:rounded-[3.5rem] shadow-[0_30px_60px_-15px_rgba(50,50,93,0.5)] border-[8px] sm:border-[10px] border-gray-900 overflow-hidden ring-1 ring-gray-900/10 transform rotate-[-3deg] sm:rotate-[-6deg] hover:rotate-0 transition-all duration-700 ease-out z-20">
 
               {/* Dynamic Shine */}
               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-white/10 to-transparent z-30 pointer-events-none"></div>
 
               {/* Notch */}
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-black rounded-b-3xl z-30"></div>
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-28 sm:w-32 h-6 sm:h-7 bg-black rounded-b-3xl z-30"></div>
 
               {/* Status Bar */}
-              <div className="absolute top-0 left-0 w-full h-12 z-20 flex justify-between px-8 items-center pt-2">
+              <div className="absolute top-0 left-0 w-full h-12 z-20 flex justify-between px-6 sm:px-8 items-center pt-2">
                 <div className="text-white text-xs font-medium">9:41</div>
                 <div className="flex space-x-1.5">
                   <div className="w-4 h-2.5 bg-white rounded-[2px]"></div>
@@ -148,10 +148,10 @@ export const Hero: React.FC = () => {
               </div>
 
               {/* Screen Content */}
-              <div className="w-full h-full bg-[#F5F7FA] pt-14 px-5 pb-6 flex flex-col relative z-10 font-sans">
+              <div className="w-full h-full bg-[#F5F7FA] pt-12 px-5 pb-6 flex flex-col relative z-10 font-sans">
 
                 {/* App Header */}
-                <div className="flex justify-between items-center mb-8">
+                <div className="flex justify-between items-center mb-6">
                   <div>
                     <p className="text-gray-500 text-xs font-semibold mb-0.5">Welcome back,</p>
                     <h3 className="text-rupivo-dark font-bold text-xl">Rahul Sharma</h3>
@@ -162,19 +162,19 @@ export const Hero: React.FC = () => {
                 </div>
 
                 {/* Credit Card / Offer */}
-                <div className="bg-gradient-to-br from-rupivo-blue to-[#1e6091] rounded-3xl p-6 text-white mb-6 shadow-xl shadow-blue-900/20 relative overflow-hidden group cursor-pointer">
+                <div className="bg-gradient-to-br from-rupivo-blue to-[#1e6091] rounded-3xl p-5 text-white mb-5 shadow-xl shadow-blue-900/20 relative overflow-hidden group cursor-pointer shrink-0">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
                   <div className="relative z-10">
-                    <div className="flex justify-between items-start mb-6">
+                    <div className="flex justify-between items-start mb-4">
                       <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-lg text-[10px] font-bold tracking-wider uppercase">
                         Pre-Approved
                       </div>
                       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Rupay-Logo.png/800px-Rupay-Logo.png" alt="Rupay" className="h-4 opacity-80 brightness-0 invert" />
                     </div>
                     <p className="text-blue-100 text-sm font-medium mb-1">Available Limit</p>
-                    <h2 className="text-3xl font-bold mb-6 tracking-tight">₹ 5,00,000</h2>
+                    <h2 className="text-3xl font-bold mb-5 tracking-tight">₹ 5,00,000</h2>
                     <div className="flex gap-3">
-                      <button className="flex-1 bg-white text-rupivo-blue text-xs font-bold py-3 rounded-xl shadow-lg hover:bg-gray-50 transition-colors">Apply Now</button>
+                      <button className="flex-1 bg-white text-rupivo-blue text-xs font-bold py-2.5 rounded-xl shadow-lg hover:bg-gray-50 transition-colors">Apply Now</button>
                       <button className="w-10 flex items-center justify-center bg-white/20 rounded-xl hover:bg-white/30 transition-colors">
                         <ArrowRight size={14} />
                       </button>
@@ -183,15 +183,15 @@ export const Hero: React.FC = () => {
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="bg-white p-4 rounded-2xl shadow-card">
+                <div className="grid grid-cols-2 gap-4 mb-5 shrink-0">
+                  <div className="bg-white p-3 rounded-2xl shadow-card">
                     <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mb-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                     </div>
                     <p className="text-gray-400 text-[10px] font-bold uppercase">Interest</p>
                     <p className="text-rupivo-dark font-bold text-lg">1.2% <span className="text-xs font-medium text-gray-400">/mo</span></p>
                   </div>
-                  <div className="bg-white p-4 rounded-2xl shadow-card">
+                  <div className="bg-white p-3 rounded-2xl shadow-card">
                     <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mb-2">
                       <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                     </div>
@@ -201,11 +201,11 @@ export const Hero: React.FC = () => {
                 </div>
 
                 {/* Steps */}
-                <div className="bg-white rounded-3xl p-5 shadow-card flex-grow">
+                <div className="bg-white rounded-3xl p-5 shadow-card flex-grow overflow-hidden flex flex-col justify-center">
                   <div className="flex justify-between items-center mb-4">
                     <h4 className="font-bold text-rupivo-dark text-sm">Application Status</h4>
                   </div>
-                  <div className="space-y-6 relative">
+                  <div className="space-y-5 relative">
                     {/* Connector Line */}
                     <div className="absolute left-[19px] top-8 bottom-4 w-0.5 bg-gray-100"></div>
 
@@ -233,10 +233,10 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Floating Background Elements for Depth */}
-            <div className="absolute top-1/3 -right-12 w-24 h-24 bg-white rounded-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] z-30 flex items-center justify-center animate-bounce duration-[3000ms]">
+            <div className="absolute top-1/3 right-0 sm:-right-12 w-20 h-20 sm:w-24 sm:h-24 bg-white rounded-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] z-30 flex items-center justify-center animate-bounce duration-[3000ms]">
               <div className="text-center">
                 <p className="text-xs text-gray-400 font-bold mb-1">Disbursed</p>
-                <p className="text-green-600 font-bold text-lg">₹2L</p>
+                <p className="text-green-600 font-bold text-base sm:text-lg">₹2L</p>
               </div>
             </div>
           </div>
