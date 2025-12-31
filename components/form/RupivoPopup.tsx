@@ -408,8 +408,7 @@ export const RupivoPopup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
                       { value: '50k-1L', label: '₹50,000 – ₹1,00,000' },
                       { value: '1L-5L', label: '₹1,00,000 – ₹5,00,000' },
                       { value: '5L-10L', label: '₹5,00,000 – ₹10,00,000' },
-                      { value: '10L-25L', label: '₹10,00,000 – ₹25,00,000' },
-                      { value: '25L+', label: 'Above ₹25,00,000' },
+
                     ]}
                   />
 
