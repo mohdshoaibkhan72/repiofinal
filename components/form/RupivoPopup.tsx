@@ -132,8 +132,7 @@ export const RupivoPopup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
               '50k-1L': 50000,
               '1L-5L': 100000,
               '5L-10L': 500000,
-              '10L-25L': 1000000,
-              '25L+': 2500000
+
             };
             return map[formData.loanAmount] || 0;
           })(),
