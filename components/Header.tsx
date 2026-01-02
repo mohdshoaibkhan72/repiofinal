@@ -62,7 +62,7 @@ export const Header: React.FC = () => {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2.5 z-50" onClick={() => window.scrollTo(0, 0)}>
               <img
-                src={location.pathname === '/partner' ? "/RUPIVO_PARTNERS_transparent.png" : "https://rupivo.com/assets/logo-vldAEOl7.png"}
+                src={location.pathname === '/partner' ? "/RUPIVO_PARTNERS_transparent.png" : "/logo.png"}
                 alt="RUPIVO"
                 className={location.pathname === '/partner' ? "h-16 w-auto object-contain" : "h-12 w-auto object-contain"}
               />
