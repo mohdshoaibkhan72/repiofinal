@@ -11,6 +11,11 @@ import { Testimonials } from './Testimonials';
 import { FinalCTA } from './FinalCTA';
 
 export const Home: React.FC = () => {
+  React.useEffect(() => {
+    // Force hash change for cache busting
+    console.log("Rupivo Home");
+  }, []);
+
   return (
     <>
       <Hero />
